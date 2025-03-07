@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 INPUT 1 OUTPUT TEMPLATE</title>
+    <style>
+
+        /* STYLE FOR THE INPUT FIELD */
+        body{
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 13vh;
+            font-size: 4vw;
+        }
+        h3 {
+            text-align: center;
+            margin-top: -4vh;
+            color: #323232;
+        }
+        
+        #charInput1 {
+            width: 4vw;
+            height: 4vw;
+            font-size: 2vw;
+            text-align: center;
+            margin-left: 40.8vw;
+            align-items: center;
+            border-radius: 0.9vw;
+            margin-top: 3.1vh;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        #charInput2 {
+            width: 4vw;
+            height: 4vw;
+            font-size: 2vw;
+            text-align: center;
+            margin-left: 0.5vw;
+            align-items: center;
+            border-radius: 0.9vw;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        /* STYLE FOR THE SUBMIT BUTTON */
+        #submitButton {
+            font-size: 2vw;
+            background-color: #000000;
+            font-style: bolder;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 1.16vw;
+            margin-left: 0.5vw;
+            border-radius: 1.1vw;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        /* STYLE FOR THE IMAGE */
+        #displayedImage {
+            display: none; /* This line is mandatory */
+            margin-top: 5vh;
+            width: 45vw;
+            margin-left: 26.5vw;            
+        }
+
+        /* STYLE FOR THE RESPONSE BOX */
+        #responseBox {
+            font-size: 2vw;
+            margin-top: 3.3vh;
+            text-align: center;
+            font-style: italic;
+            color: #000000;
+        }
+
+        #responseButton {
+            font-size: 1.8vw;
+            margin-top: 2vh;
+            padding: 1vw;
+            border-radius: 1.1vw;
+            border-color: black;
+            border-width: 3px;
+            font-style: bolder;
+            font-weight: 700;
+            font-family: 'Times New Roman', Times, serif;
+            margin-left: 40vw;
+        }
+
+        .responseButton-fill { 
+            background: transparent;
+            color: #000000;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .responseButton-fill:hover { 
+            background: #000000;
+            color: #fff;
+        }
+
+
+        @media only screen and (max-width: 375px) {
+            body{
+                background-color: #f2f2f2;
+            }
+            h1 {
+                font-style: italic;
+                margin-top: 10vh;
+                text-align: center;
+                font-size: 7vw;
+            }
+
+            h3 {
+                margin-top: -2vh;
+                text-align: center;
+                color: #00000096;
+                font-size: 3vw;
+                width: 65vw;
+                line-height: 90%;
+                margin-left: 15vw;
+            }
+
+            #charInput1 {
+                width: 10vw;
+                height: 10vw;
+                font-size: 5vw;
+                text-align: center;
+                margin-left: 25.5vw;
+                align-items: center;
+                border-radius: 2vw;
+                margin-top: 3.1vh;
+                border-width: 2px;
+                font-family: 'Times New Roman', Times, serif;
+            }
+
+            #charInput2 {
+                width: 10vw;
+                height: 10vw;
+                font-size: 5vw;
+                text-align: center;
+                margin-left: 0.5vw;
+                align-items: center;
+                border-radius: 2vw;
+                border-width: 2px;
+                font-family: 'Times New Roman', Times, serif;
+            }
+
+            /* STYLE FOR THE SUBMIT BUTTON */
+            #submitButton {
+                font-size: 5vw;
+                background-color: #000000;
+                font-style: bolder;
+                color: white;
+                border: none;
+                cursor: pointer;
+                padding: 2.9vw;
+                margin-left: 0.5vw;
+                border-radius: 2.8vw;
+                font-family: 'Times New Roman', Times, serif;
+            }
+
+            /* STYLE FOR THE IMAGE */
+            #displayedImage {
+                display: none; /* This line is mandatory */
+                margin-top: 5vh;
+                width: 60vw;
+                margin-left: 16vw;          
+            }
+
+            /* STYLE FOR THE RESPONSE BOX */
+            #responseBox {
+                font-size: 5vw;
+                margin-top: 3.3vh;
+                text-align: center;
+                font-style: italic;
+                color: #000000;
+                width: 70vw;
+                margin-left: 11vw;
+                line-height: 99%;
+            }
+
+            #responseButton {
+                font-size: 4vw;
+                margin-top: 2vh;
+                margin-left: 26.5vw;
+                padding: 2vw;
+                border-radius: 2.8vw;
+                border-color: black;
+                border-width: 1px;
+                font-style: bolder;
+                font-weight: 700;
+
+            }
+        }
+        
+
+        
+    </style>
+</head>
+<body>
+    <h1>CLICK TO ANSWER!</h1>
+    <h3>think of answers with one letter and one number</h3>
+
+    <!-- BUTTON TO GENERATE RESPONSE -->
+    <button onclick="generateResponse()" id="responseButton" class="responseButton-fill">GET A QUESTION!</button>
+
+    <!-- TEXT BOX TO DISPLAY RESPONSE -->
+    <div id="responseBox"></div>
+
+    
+    
+    <!-- INPUT FIELD FOR 1 CHARACTER -->
+    <input type="text" id="charInput1" maxlength="1">
+    <input type="text" id="charInput2" maxlength="1">
+
+    <!-- BUTTON TO DISPLAY IMAGE -->
+    <button onclick="displayImage()" id="submitButton">enter</button>
+
+    <!-- IMAGE TO DISPLAY -->
+    <img id="displayedImage" src="" alt="Displayed Image">
+    
+    
+    
+
+    
+
+
+    <!-- Image Display Script Below -->
+    <script>
+
+const responses = [
+            { response: "Who’s the band that’s always 'With or Without You'?", input1: "U", input2: "2", src: "imgs/nAV9tI-1.gif", backgroundColor: "#90EE90"},
+            { response: "What’s the only sauce that can truly 'steak' its claim as the best?", input1: "A", input2: "1", src: "imgs/steak-sauce.gif", backgroundColor: "#90EE90" },
+            { response: "What song has you feeling so fly like a...", input1: "G", input2: "6", src: "imgs/8OTR.gif", backgroundColor: "#90EE90"},
+            { response: "Who’s the sport that’s built on adrenaline and high-speed thrills?", input1: "F", input2: "1", src: "imgs/giphy.gif", backgroundColor: "#90EE90"},
+            { response: "What's a four-legged detective always on the scene?", input1: "K", input2: "9", src: "imgs/5d051bfc-de06-48ea-af56-2597a7ac628c_thumbnail.gif", backgroundColor: "#90EE90"}
+        ];
+
+        let currentResponse = null;
+
+        function enableInputs() {
+            document.getElementById("charInput1").disabled = false;
+            document.getElementById("charInput2").disabled = false;
+        }
+
+        function displayImage() {
+            const imgElement = document.getElementById("displayedImage");
+
+             // Letter
+             const input1_letter = document.getElementById("charInput1").value.toUpperCase();
+            const input2_number = document.getElementById("charInput2").value;
+
+            if (!input1_letter || !input2_number) {
+                imgElement.style.display = "none";
+                imgElement.src = ""; // Hide the image if inputs are empty
+                return;
+            }
+
+            // Check if the user's input matches the current response
+            if (currentResponse && currentResponse.input1 === input1_letter && currentResponse.input2 === input2_number) {
+                imgElement.src = currentResponse.src;
+                imgElement.style.display = "block";
+                document.body.style.backgroundColor = currentResponse.backgroundColor; // Change background color
+            } else {
+                imgElement.style.display = "block";
+                imgElement.src = "imgs/image3.gif"; // Hide the image if no condition is met
+                alert("Incorrect. Try again.");
+                document.body.style.backgroundColor= "#FF474C";
+            }
+            
+        }
+
+        function generateResponse() {
+            const randomIndex = Math.floor(Math.random() * responses.length);
+            const responseBox = document.getElementById("responseBox");
+            currentResponse = responses[randomIndex];
+            responseBox.innerHTML = `<strong>${currentResponse.response}</strong>`;
+        }
+    </script>
+
+</body>
+</html>
